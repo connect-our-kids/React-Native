@@ -1,0 +1,3 @@
+rootProject.name = 'ConnectOurKids1'
+
+include ':app'
