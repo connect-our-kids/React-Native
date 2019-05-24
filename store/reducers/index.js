@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import { landingView } from './landingView';
+import { search } from './searchReducer';
 
 export default combineReducers({
-  load:landingView
+  search:search
 });

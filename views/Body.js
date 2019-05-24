@@ -1,12 +1,27 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import Search from './searchForm/Search'
-const Body = props =>{
-    return(
-        <View>
-            <Search />
-        </View>
-    )
-}
+import Search from './searchForm/Search';
+import {connect} from 'react-redux';
+import {toggleModal} from '../store/actions';
 
-export default Body;
+import {Route} from "react-router-native";
+import Modals from './Modal'
+
+
+const Body = props =>{
+        return(
+        <>
+            <Route path='/' render={()=><Search {...props}/>} />
+
+            <Route path='/modal' render={()=><Modals  {...props} />} />
+           
+        </>
+    )
+    
+}
+const mapStateToProps = state =>{
+    return{
+        ...state.search
+    }
+}
+export default connect(mapStateToProps,{toggleModal})(Body);
+
