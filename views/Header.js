@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import { StyleSheet, View, Image,Text,Button, TouchableOpacity} from 'react-native';
+import { StyleSheet, View, Image,Text,Button, TouchableOpacity,} from 'react-native';
+import {Link} from 'react-router-native'
 
 
 export default class Header extends Component{
@@ -8,10 +9,6 @@ export default class Header extends Component{
         username:'roman'
     }
     
-   componentDidMount(){
-      
-   }
-
 
    onPressLearnMore = e =>{
         e.preventDefault();
@@ -29,14 +26,22 @@ export default class Header extends Component{
                     <View style={styles.login}>
                         {//Needs To Log In
                         !this.state.isLoggedin && 
-                        <>
-                            <TouchableOpacity onPress={() => alert(this.state.isLoggedin)} >
-                                <Text>Log In </Text>
-                            </TouchableOpacity>
+                        <>  
+                            
+                                <TouchableOpacity  >
+                                    <Link to='modal/login' onPress={this.props.toggleModal} >
+                                        <Text style={styles.plink}>Log In </Text>
+                                    </Link>
+                                </TouchableOpacity>
+                            
                             <Text>or </Text>
-                            <TouchableOpacity onPress={() => alert(this.state.isLoggedin)} >
-                                <Text>Log In</Text>
-                            </TouchableOpacity>
+                            
+                                <TouchableOpacity  >
+                                    <Link to='modal/signup' onPress={this.props.toggleModal} >
+                                        <Text style={styles.plink}>Sign Up</Text>
+                                    </Link>
+                                </TouchableOpacity>
+                            
                         </>}
                         {//Is Logged In
                         this.state.isLoggedin && 
@@ -56,10 +61,8 @@ const styles = StyleSheet.create({
       width:'100%',
       height:'10%',
       marginTop:25,
-      
       justifyContent:'space-between',
       alignItems:'flex-end'
-      
     },img:{
         padding:0,
         width:'100%',
@@ -69,6 +72,6 @@ const styles = StyleSheet.create({
         marginRight:28,
         flexDirection:'row'
     },plink:{
-        color:'#508db3',
+        color:'rgb(80,141,179)',
     }
   });
